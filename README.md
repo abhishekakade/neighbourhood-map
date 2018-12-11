@@ -1,6 +1,6 @@
 ## React Neighbourhood Map FEND
 
-This project is called "My Neighbourhood" project, a single page application bootstrapped with [Create React App](https://github.com/facebook/create-react-app), features a map of Mumbai with some highlighted locations, third-party data about those locations and various ways to browse the content.
+This project is called "Neighbourhood Map" project, a single page application bootstrapped with [Create React App](https://github.com/facebook/create-react-app), features a map of Mumbai with some highlighted locations, third-party data about those locations and various ways to browse the content.
 
 ## APIs and libraries used - 
 
