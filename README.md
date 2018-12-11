@@ -1,6 +1,21 @@
 ## React Neighbourhood Map FEND
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is called "My Neighbourhood" project, a single page application bootstrapped with [Create React App](https://github.com/facebook/create-react-app), features a map of Mumbai with some highlighted locations, third-party data about those locations and various ways to browse the content.
+
+## APIs and libraries used - 
+
+ - [Google Maps](https://developers.google.com/maps/documentation/javascript/tutorial) 
+ - [Foursquare](https://developer.foursquare.com/)
+ - [react-google-maps](https://github.com/tomchentw/react-google-maps) 
+
+## How to Use?
+
+ - Download and extract the zip file OR `clone` the repo.
+ - `cd neighbourhood-map` 
+ - `npm install` to install the dependencies.
+ - Then `npm start` to locally run this project in your browser at `localhost:3000`.
+
+---
 
 ## Available Scripts
 
