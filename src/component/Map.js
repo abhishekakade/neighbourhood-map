@@ -12,7 +12,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
       .filter(marker => marker.isVisible)
       .map((marker, index, arr) => {
 
-        const venueInfo = props.venues.find(venue => venue.id = marker.id)
+        const venueInfo = props.venues.find(venue => venue.id === marker.id)
 
         return (
           <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }}

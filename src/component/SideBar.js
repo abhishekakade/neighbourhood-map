@@ -30,7 +30,7 @@ export default class SideBar extends Component {
     this.setState({ query: e.target.value });
     const markers = this.props.venues.map(venue => {
       const isMatched = venue.name.toLowerCase().includes(e.target.value.toLowerCase());
-      const marker = this.props.markers.find(marker => marker.id = venue.id);
+      const marker = this.props.markers.find(marker => marker.id === venue.id);
 
       if(isMatched) {
         marker.isVisible = true;

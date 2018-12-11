@@ -35,7 +35,7 @@ class App extends Component {
     marker.isOpen = true;
     this.setState({ markers: Object.assign(this.state.markers, marker) });
 
-    const venue = this.state.venues.find(venue => venue.id = marker.id)
+    const venue = this.state.venues.find(venue => venue.id === marker.id);
     
     SquareAPI.getVenueDetails(marker.id)
     .then(res => {
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   handleListItemClick = (venue) => {
-    const marker = this.state.markers.find(marker => marker.id = venue.id);
+    const marker = this.state.markers.find(marker => marker.id === venue.id);
     this.handleMarkerClick(marker);
     console.log(venue);
   }
