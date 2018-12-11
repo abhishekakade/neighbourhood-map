@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import "./App.css";
-import Map from "./component/Map";
+import Map from "./components/Map";
 import SquareAPI from "./API"
-import SideBar from './component/SideBar';
+import SideBar from './components/SideBar';
 // import {  } from 'react-google-maps';
 // import CurrentLocation from './Map';
 
@@ -22,6 +22,7 @@ class App extends Component {
     }
   }
 
+  // to close open markers  
   closeAllMarkers = () => {
     const markers = this.state.markers.map(marker => {
       marker.isOpen = false;
@@ -30,6 +31,7 @@ class App extends Component {
     this.setState({ markers: Object.assign(this.state.markers, markers) });
   }
 
+  // closes all open markers and opens the selected, gets details + images 
   handleMarkerClick = (marker) => {
     this.closeAllMarkers();
     marker.isOpen = true;
@@ -41,11 +43,14 @@ class App extends Component {
     .then(res => {
       const newVenue = Object.assign(venue, res.response.venue);
       this.setState({ venues: Object.assign(this.state.venues, newVenue) });
-      console.log(newVenue);
+      // console.log(newVenue);
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      alert(`An error occurred while trying to fetch data from the server: ${err}`)
+    });
   }
 
+  // opens infowindow for the clicked list item in map 
   handleListItemClick = (venue) => {
     const marker = this.state.markers.find(marker => marker.id === venue.id);
     this.handleMarkerClick(marker);
@@ -53,12 +58,17 @@ class App extends Component {
   }
   
   componentDidMount() {
-    // const austin = "Austin, TX";
+
+    // to get rid of the default 8px body margin 
+    document.body.style.margin = 0;
+    
+    // hardcoded URL parameters 
     SquareAPI.search({
-      near: 'Austin, TX',
-      query: 'tacos',
+      near: 'Mumbai, MH',
+      query: 'coffee',
       limit: 10
-    }).then(results => {
+    })
+    .then(results => {
       const { venues } = results.response;
       const { center } = results.response.geocode.feature.geometry;
       const markers = venues.map(venue => {
@@ -73,19 +83,28 @@ class App extends Component {
 
       this.setState({ venues, center, markers })
 
-      console.log(results)
+      // console.log(results)
     })
-      .catch(err => console.error(err));
-    // The error Im getting in paramas in cuz of white spaces in URL params like near, query, etc
+    .catch(err => {
+      alert(`An error occurred while trying to fetch data from the server: ${err}`)
+    });
+    /* The error Im getting in params in cuz of white spaces (%20) in URL parameters like near, query, etc */ 
   }
 
   render() {
     return (
       <div className="App">
-        <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
-        <Map {...this.state}
+        
+        <SideBar 
+          {...this.state} 
+          handleListItemClick={this.handleListItemClick} 
+        />
+        
+        <Map 
+          {...this.state}
           handleMarkerClick={this.handleMarkerClick}
         />
+
       </div>
     );
   }

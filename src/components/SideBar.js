@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import VenueList from "./VenueList";
+import Footer from "./Footer";
 
 export default class SideBar extends Component {
 
@@ -45,14 +46,16 @@ export default class SideBar extends Component {
 
   render() {
     return (
-      <div className="sideBar">
-        <input type={"search"} id={"search"}
-          placeholder={"Filter Venues..."} onChange={this.handleChange} />
+      <div className="side-bar">
+        <h2 className="taco-header">10 Hottest Coffee Shops in Mumbai</h2>
+        <input type={"search"} id={"search"} 
+          placeholder={"Search for Venues..."} onChange={this.handleChange} />
         <VenueList 
           {...this.props} 
           venues={this.handleFilterVenues()}
           handleListItemClick={this.props.handleListItemClick} 
         />
+        <Footer />
       </div>
     );
   }

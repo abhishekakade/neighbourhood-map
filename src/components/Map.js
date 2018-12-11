@@ -1,28 +1,34 @@
 import React, { Component } from "react";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+
+/* DONT delete the comment below! */
 /* global google */
+
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
-    defaultZoom={8} 
-    zoom={props.zoom}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }} 
-    center={props.center}
+    defaultZoom={10} 
+    zoom={props.zoom} 
+    // Mumbai lat lng 
+    defaultCenter={{ lat: 19.0760, lng: 72.8777 }} 
+    // center={ props.center } 
+    center={{lat: 19.0760, lng: 72.8777}} 
   >
     {props.markers && props.markers
       .filter(marker => marker.isVisible)
       .map((marker, index, arr) => {
 
-        const venueInfo = props.venues.find(venue => venue.id === marker.id)
+        const venueInfo = props.venues.find(venue => venue.id === marker.id);
+        // console.log(venueInfo.bestPhoto);
 
         return (
           <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => props.handleMarkerClick(marker)} 
             animation={ arr.length === 1 ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP } >
 
-            {marker.isOpen && venueInfo.bestPhoto && (
+            {venueInfo.bestPhoto && marker.isOpen && (
               <InfoWindow>
                 <React.Fragment>
-                  <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`}
+                  <img src={`${venueInfo.bestPhoto.prefix}150x150${venueInfo.bestPhoto.suffix}`}
                     alt={"Venue"} />
                   <p>{venueInfo.name}</p>
                 </React.Fragment>

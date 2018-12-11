@@ -8,9 +8,9 @@ class Helper {
     const keys = {
       // client_id: "DGGKFI2V0SUIW2GWWAEUKAG3ZTCFZ01DJVAM5XUHNLRV52XD",
       // client_secret: "54CTWF2RYBH2VAORHV0L1UGPPLASCTTYUQ5XY1QNDIX5JPDJ",
-      client_id: "435HVCVHZDMKM2IZGXTC4CVCWLWSSL3OMR3B42B332Y3WXP5",
-      client_secret: "GUXUT1N3QWQB0N2JLC5ORTXWSKGHUTOQVDIDZFT1XLX53QT1",
-      v: "20180929"
+      client_id: "LUMR2H0LMIAUA32HFS0YSPMVFJAHST5LD32I5HNKI3I3MDQ3",
+      client_secret: "WPSCEJAMHUXPSEQGTW2KEITVJ4KVLIMRKOZLQJ445B5JVTL0",
+      v: "20181207"
     };
 
     return Object.keys(keys)
@@ -24,7 +24,6 @@ class Helper {
     }
 
     else {
-      // return (Object.keys(urlPrams).map(key => `${key} = ${urlPrams[key]}`).join("&"));
       return (Object.keys(urlPrams).map(key => `${key} = ${urlPrams[key]}`).join("&").split(" ").join(""));
     }
   }
@@ -45,7 +44,9 @@ class Helper {
       `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`, 
       requestData)
       .then(res => res.json())
-      .catch(err => console.error(err));
+      .catch(err => {
+        alert(`An error occurred while trying to fetch data from the server: ${err}`)
+      });
   }
 } 
 
@@ -65,5 +66,3 @@ export default class SquareAPI {
   }
 }
 
-// client_id: "X3NEVOBHAVHXFCCZ1NFKLQKLUY0CKGE4SH44JDRXBLH15EP4",
-// client_secret: "SJWQRFTFA2GIGGJH4PWYVRUHSKBVCCKNRE3DWZZXY1CBFDZZ",
