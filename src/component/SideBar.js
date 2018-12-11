@@ -20,7 +20,9 @@ export default class SideBar extends Component {
       return venues;
     }
 
-    return this.props.venues;
+    else {
+      return this.props.venues;
+    }
 
   }
 

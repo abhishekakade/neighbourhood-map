@@ -18,6 +18,8 @@
 
 .venueList {
   padding: 1rem;
+  height: 100%;
+  overflow: scroll;
 }
 
 .listItem {
